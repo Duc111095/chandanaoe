@@ -1,4 +1,4 @@
-package com.ducnh.chandanaoe.modules.users.dtos;
+package com.ducnh.chandanaoe.modules.users.resources;
 
 public class LoginRequest {
     private String email;

@@ -1,7 +1,11 @@
 package com.ducnh.chandanaoe.database.seeder;
 
+import com.ducnh.chandanaoe.modules.users.entities.User;
+import com.ducnh.chandanaoe.modules.users.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,9 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseSeeder.class);
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -23,13 +31,14 @@ public class DatabaseSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (isTableEmpty()) {
             String passwordEncode = passwordEncoder.encode("password");
-            entityManager.createNativeQuery("INSERT INTO users (name, email, password, user_catalogue_id, phone) VALUES (?, ?, ?, ?, ?)")
-                            .setParameter(1, "Duc Nguyen")
-                            .setParameter(2, "huynhduc111095@gmail.com")
-                            .setParameter(3, passwordEncode)
-                            .setParameter(4, 1)
-                            .setParameter(5, "0377776595")
-                            .executeUpdate();
+
+            User user = new User();
+            user.setName("Duc Nguyen");
+            user.setEmail("huynhduc111095@gmail.com");
+            user.setPassword(passwordEncode);
+            user.setUserCatalogueId(1L);
+            user.setPhone("0377776595");
+            userRepository.save(user);
         }
     }
 

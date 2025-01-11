@@ -1,7 +1,7 @@
 package com.ducnh.chandanaoe.modules.users.controllers;
 
-import com.ducnh.chandanaoe.modules.users.dtos.LoginRequest;
-import com.ducnh.chandanaoe.modules.users.dtos.LoginResponse;
+import com.ducnh.chandanaoe.modules.users.resources.LoginRequest;
+import com.ducnh.chandanaoe.modules.users.resources.LoginResource;
 import com.ducnh.chandanaoe.modules.users.services.impl.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +19,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
-        LoginResponse auth = userService.login(request);
+    public ResponseEntity<LoginResource> login(@RequestBody LoginRequest request) {
+        LoginResource auth = userService.login(request);
         return ResponseEntity.ok(auth);
     }
 }

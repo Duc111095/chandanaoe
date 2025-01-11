@@ -1,8 +1,8 @@
 package com.ducnh.chandanaoe.modules.users.services.interfaces;
 
-import com.ducnh.chandanaoe.modules.users.dtos.LoginRequest;
-import com.ducnh.chandanaoe.modules.users.dtos.LoginResponse;
+import com.ducnh.chandanaoe.modules.users.resources.LoginRequest;
+import com.ducnh.chandanaoe.modules.users.resources.LoginResource;
 
 public interface UserServiceInterface {
-    LoginResponse login(LoginRequest request);
+    LoginResource login(LoginRequest request);
 }
