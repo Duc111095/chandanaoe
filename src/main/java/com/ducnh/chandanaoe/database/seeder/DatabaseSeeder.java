@@ -2,6 +2,9 @@ package com.ducnh.chandanaoe.database.seeder;
 
 import com.ducnh.chandanaoe.modules.users.entities.User;
 import com.ducnh.chandanaoe.modules.users.repositories.UserRepository;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Encoders;
+import io.jsonwebtoken.security.Keys;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.slf4j.Logger;
@@ -11,6 +14,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.crypto.SecretKey;
 
 
 @Component

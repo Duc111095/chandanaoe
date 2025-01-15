@@ -1,10 +1,17 @@
 package com.ducnh.chandanaoe.modules.users.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class User {
 
@@ -36,87 +43,5 @@ public class User {
     @PreUpdate
     protected void onUpdated() {
         updatedAt = LocalDateTime.now();
-    }
-
-    public User (String name, String email, String password, Long userCatalogueId, String phone) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.userCatalogueId = userCatalogueId;
-        this.phone = phone;
-    }
-
-    public User() {}
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUserCatalogueId() {
-        return this.userCatalogueId;
-    }
-
-    public void setUserCatalogueId(Long userCatalogueId) {
-        this.userCatalogueId = userCatalogueId;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return this.phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getImage() {
-        return this.image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getAddress() {
-        return this.address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public LocalDateTime getCreatedAt(){
-        return this.createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return this.updatedAt;
     }
 }
